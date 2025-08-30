@@ -1,0 +1,26 @@
+plugins {
+	id "java"
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+}
+
+group = 'com.github.markrileybot.heatshrink'
+version = '0.1.1'
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+	testCompile 'commons-io:commons-io:2.5'
+	testCompile files(sourceSets.test.resources.srcDirs)
+}
+
+task sourceJar(type: Jar) {
+	from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: 'javadoc') {
+	from javadoc.destinationDir
+}
